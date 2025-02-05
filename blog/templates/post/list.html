@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Blog{% endblock %}
+
+{% block content %}
+<h1>Posts</h1>
+<ul>
+    {% for post in posts %}
+    <li>
+        <a href="{% url 'blog:post_detail' post.id %}">{{ post.title }} <i> {{ post.updated_at}} </i></a>
+    </li>
+    {{ post.content | truncatewords:30 }}
+    {% endfor %}
+</ul>
+{% endblock %}
